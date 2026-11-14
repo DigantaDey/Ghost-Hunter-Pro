@@ -5,6 +5,7 @@ Native Android evidence-led field investigation recorder. Full product direction
 ## Implemented
 
 - Runtime discovery and live display for magnetometer, accelerometer, gyroscope, ambient light, and barometer when available; timestamped raw sensor log, foreground pause-gap markers, and local session history.
+- Live environmental-change warning: after a ten-second in-session magnetometer baseline, three consecutive readings at least max(12 µT, 5 baseline standard deviations) away from the reference show a banner and toast, and add a timestamped event to the session log. The warning explicitly describes a sensor change, lists common interference/movement explanations, and is not a paranormal verdict. A 30-second cooldown prevents alert spam.
 - Timestamped investigator observations, session/case/site/team roster details, local audio recording (explicit runtime microphone permission), and photo/video capture through the Android camera app to user-visible media storage.
 - Five-second magnetometer quality check and documented software baseline; not certified calibration.
 - PDF investigation report with case/device/method metadata, timeline events, descriptive first-axis sensor statistics, media index, limitations, and no automated paranormal verdict.
