@@ -38,7 +38,10 @@ jobs:
         with:
           name: ghost-hunter-pro-debug-apk
       - name: Publish APK release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.ref_name }}
-        run: gh release create "$TAG" app-debug.apk --title "Ghost Hunter Pro $TAG" --notes "Automated debug APK build. This is an unsigned development build, not a production-signed release."
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Ghost Hunter Pro ${{ github.ref_name }}
+          body: Automated debug APK build. This is an unsigned development build, not a production-signed release.
+          files: app-debug.apk
+          fail_on_unmatched_files: true
+
