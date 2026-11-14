@@ -1,17 +1,20 @@
 # Ghost Hunter Pro
 
-Native Android field recorder built around the evidence-first product requirements in [`PRODUCT_SPEC.md`](PRODUCT_SPEC.md).
+Native Android evidence-led field investigation recorder. Full product direction and safety/credibility requirements are in [`PRODUCT_SPEC.md`](PRODUCT_SPEC.md).
 
-## Current app
+## Implemented
 
-A lightweight Java/Android starter app that discovers device magnetometer, accelerometer, gyroscope, ambient-light, and barometer sensors at runtime; displays live readings; records sensor samples with timestamps to an in-memory session; adds timestamped markers; and exports a CSV through Android's document picker. It is local-only and works without network access. Missing sensors are disclosed instead of simulated.
-
-The app deliberately does not claim paranormal detection or communication. Sensor outputs describe physical measurements and can be affected by device and environmental conditions. It is not safety equipment.
+- Runtime discovery and live display for magnetometer, accelerometer, gyroscope, ambient light, and barometer when available; timestamped raw sensor log, foreground pause-gap markers, and local session history.
+- Timestamped investigator observations, session/case/site/team roster details, local audio recording (explicit runtime microphone permission), and photo/video capture through the Android camera app to user-visible media storage.
+- Five-second magnetometer quality check and documented software baseline; not certified calibration.
+- PDF investigation report with case/device/method metadata, timeline events, descriptive first-axis sensor statistics, media index, limitations, and no automated paranormal verdict.
+- CSV export and ZIP case-bundle export with original local audio and referenced camera media, report, and SHA-256 integrity manifest. Bundle export offers Android's system share sheet.
+- Local-first, no account and no network requirement; no paranormal detection or communication claims.
 
 ## Build
 
-Open this project in Android Studio with Android Gradle Plugin 8.7.3 and Android SDK 35 installed, then sync and run the `app` configuration on a physical Android device. Sensors differ by device; emulator readings are not representative. A Gradle wrapper is not included yet.
+Open in Android Studio with Android Gradle Plugin 8.7.3 and Android SDK 35 installed; run the `app` configuration on a physical Android device. The Android CI workflow builds a debug APK on pull requests and produces a version-tag release asset. Sensors/cameras vary; test on target devices.
 
-## Current limitations
+## Known scope limits
 
-This is the first implementation slice, not the complete product specified in `PRODUCT_SPEC.md`. Sessions currently live in memory and are lost if the process exits; there is no persistent case library, audio/video capture, PDF report, team sync, calibration workflow, or background recording service. Keep the app foregrounded during a session. These limitations should be addressed before presenting it as production-ready.
+Team support is an on-device roster and user-initiated case-bundle sharing, not cloud sync, invitations, access revocation, or real-time multi-device collaboration. Camera capture is delegated to the device's installed camera app; app-owned audio stops when the app backgrounds. Sensor capture is foreground-only and records explicit suspension/resume events, not a background-service guarantee. There is no external certified instrument integration, GPS capture, or production signing configuration. The published CI APK is an unsigned debug/development build. Treat the app as an investigation recorder, not certified scientific or safety equipment.
